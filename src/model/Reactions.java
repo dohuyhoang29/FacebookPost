@@ -1,33 +1,56 @@
 package model;
 
 public enum Reactions {
-    NON(0, "Like", "images/ic_like_post.png"),
-    LIKE(1, "Like", "images/ic_like.png"),
-    LOVE(2, "Love", "images/ic_tym.png"),
-    HAHA(3, "Haha", "images/ic_haha.png"),
-    SAD(4, "Sad", "images/ic_sad.png"),
-    WOW(5, "Wow", "images/ic_wow.png"),
-    ANGRY(6, "Angry", "images/ic_angry.png");
+  NON(0, "Like", "#606266", "/images/ic_like_outline.png"),
+  LIKE(1, "Like", "#056BE1", "/images/ic_like.png"),
+  LOVE(2, "Love", "#E12C4A", "/images/ic_love_.png"),
+  CARE(3, "Care", "#EAA823", "/images/ic_care.png"),
+  HAHA(4, "Haha", "#EAA823", "/images/ic_haha.png"),
+  WOW(5, "Wow", "#EAA823", "/images/ic_wow.png"),
+  SAD(6, "Sad", "#EAA823", "/images/ic_sad.png"),
+  ANGRY(7, "Angry", "#DD6B0E", "/images/ic_angry.png");
 
-    private int id;
-    private String name;
-    private String imgSrc;
+  private int id;
+  private String name;
+  private String color;
+  private String igmSrc;
 
-    Reactions(int id, String name, String imgSrc) {
-        this.id = id;
-        this.name = name;
-        this.imgSrc = imgSrc;
-    }
+  Reactions(int id, String name,String color, String igmSrc) {
+    this.id = id;
+    this.name = name;
+    this.color = color;
+    this.igmSrc = igmSrc;
+  }
 
-    public int getId() {
-        return id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public String getImgSrc() {
-        return imgSrc;
-    }
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getColor() {
+    return color;
+  }
+
+  public void setColor(String color) {
+    this.color = color;
+  }
+
+  public String getIgmSrc() {
+    return igmSrc;
+  }
+
+  public void setIgmSrc(String igmSrc) {
+    this.igmSrc = igmSrc;
+  }
 }
