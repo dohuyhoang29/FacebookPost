@@ -10,22 +10,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PostController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
          <children>
-            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgProfide" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
             <VBox alignment="CENTER">
                <children>
                   <HBox alignment="CENTER_LEFT">
                      <children>
-                        <Label text="Username">
+                        <Label fx:id="username" text="Username">
                            <font>
                               <Font name="Segoe UI Semibold" size="18.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgVerified" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/ic_verified.png" />
                            </image>
@@ -37,12 +36,12 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT">
                      <children>
-                        <Label text="1h" textFill="#616770">
+                        <Label fx:id="date" text="1h" textFill="#616770">
                            <font>
                               <Font name="Segoe UI Historic" size="15.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="audience" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/ic_public.png" />
                            </image>
@@ -65,7 +64,7 @@
             <Insets left="20.0" right="20.0" />
          </padding>
       </HBox>
-      <Label maxWidth="1.7976931348623157E308" text="Caption">
+      <Label fx:id="caption" maxWidth="1.7976931348623157E308" text="Caption">
          <VBox.margin>
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
@@ -73,20 +72,145 @@
             <Font name="Segoe UI Historic" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="535.0" fitWidth="535.0" pickOnBounds="true" preserveRatio="true" />
-      <StackPane prefHeight="150.0" prefWidth="200.0">
+      <ImageView fx:id="imgPost" fitHeight="535.0" fitWidth="535.0" pickOnBounds="true" preserveRatio="true" />
+      <StackPane alignment="CENTER_LEFT">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <HBox alignment="CENTER">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/ic_like.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/ic_tym.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/ic_haha.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label fx:id="nbReactions" maxWidth="1.7976931348623157E308" text="Nb Reactions">
+                           <font>
+                              <Font name="Segoe UI Historic" size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </HBox>
+                  <Pane prefWidth="135.0" />
+                  <Label fx:id="nbComments" text="nb comments" textFill="#616366">
+                     <font>
+                        <Font name="Segoe UI Historic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nbShares" text="nb shares" textFill="#616366">
+                     <font>
+                        <Font name="Segoe UI Historic" size="18.0" />
+                     </font>
+                  </Label>
                </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="reactionsContainer" maxWidth="-Infinity" styleClass="reactions-container" stylesheets="@../resources/style.css">
+               <children>
+                  <ImageView fx:id="imgLike" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/ic_like.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgLove" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/ic_tym.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgHaha" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/ic_haha.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgWow" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/ic_wow.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgSad" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/ic_sad.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgAngry" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/ic_angry.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <StackPane.margin>
+                  <Insets left="10.0" />
+               </StackPane.margin>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
             </HBox>
          </children>
       </StackPane>
+      <HBox styleClass="top-border" stylesheets="@../resources/style.css">
+         <children>
+            <HBox fx:id="likeContainer" alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/ic_like_post.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Like" textFill="#606266">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="commentContainer" alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/ic_comments_post.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Comment" textFill="#606266">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="shareContainer" alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/ic_share_post.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Share" textFill="#606266">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </HBox>
+         </children>
+      </HBox>
    </children>
 </VBox>
